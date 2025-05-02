@@ -11,6 +11,9 @@ package com.mycompany.mavenproject3;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,4 +75,21 @@ public class ProductForm extends JFrame {
             });
         }
     }
-}
+
+    private void addProductData(List<Product> productList)
+    for (Product product : productList) {
+        tableModel.addRow(new Object[]{
+            product.getCode(), product.getName(), product.getCategory(), product.getPrice(), product.getStock()
+        });
+    }
+            int responseCode = conn.getResponseCode();
+            if (responseCode == 200 || responseCode == 201) {
+                JOptionPane.showMessageDialog(this, "product berhasil ditambahkan!");
+                productField.setText("");
+                loadDataFromAPI();
+            } else {
+                JOptionPane.showMessageDialog(this, "Gagal menambahkan product. Code: " + responseCode);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error:\n" + e.getMessage());
+        }
