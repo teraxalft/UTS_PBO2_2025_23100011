@@ -1,12 +1,41 @@
 package com.mycompany.mavenproject3;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
+
 import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.*;
+import java.io.*;
+import java.util.*;
+import java.util.ArrayList;
 
 public class Mavenproject3 extends JFrame implements Runnable {
     private String text;
     private int x;
     private int width;
+    private JTable table;
+    private DefaultTableModel tableModel;
+    private final String[] columnNames = {"Kode Barang", "Nama Barang", "katagori", "Harga Jual", "Stok Barang"};
     private BannerPanel bannerPanel;
     private JButton addProductButton;
 
@@ -30,6 +59,9 @@ public class Mavenproject3 extends JFrame implements Runnable {
         
         addProductButton.addActionListener(e -> {
             new ProductForm().setVisible(true);
+
+            tableModel = new DefaultTableModel(columnNames, 0);
+            table = new JTable(tableModel);
         });
 
         setVisible(true);
@@ -66,6 +98,6 @@ public class Mavenproject3 extends JFrame implements Runnable {
     }
 
     public static void main(String[] args) {
-        new Mavenproject3("Menu yang tersedia: Americano | Pandan Latte | Aren Latte | Matcha Frappucino | Jus Apel");
+        new Mavenproject3("Menu yang tersedia:Matcha Frappucino | Jus Apel");
     }
 }
