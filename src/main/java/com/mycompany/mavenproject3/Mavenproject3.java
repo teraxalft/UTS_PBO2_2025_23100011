@@ -59,8 +59,8 @@ public class Mavenproject3 extends JFrame implements Runnable {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            g.setColor(Color.BLACK);
-            g.setFont(new Font("Arial", Font.PLAIN, 18));
+            g.setColor(Color.RED);
+            g.setFont(new Font("Arial", Font.BOLD, 18));
             g.drawString(text, x, getHeight() / 2);
         }
     }
